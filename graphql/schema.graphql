@@ -1,0 +1,19 @@
+# url 같은 값이다.
+type Movie {
+  id: Int!
+  title: String!
+  rating: Float!
+  summary: String!
+  language: String!
+  medium_cover_image: String!
+  url: String!
+   
+}
+
+type Query {
+  # 왼쪽은 이름, 오른쪽은 return할 값.
+  # movies: [Movie]!
+  movies(limit: Int, rating: Float): [Movie]!,
+  getMovie(movie_id: Int!): Movie,
+  getSuggest(movie_id: Int!): [Movie]!
+}
