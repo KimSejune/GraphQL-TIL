@@ -17,3 +17,12 @@ type Query {
   getMovie(movie_id: Int!): Movie,
   getSuggest(movie_id: Int!): [Movie]!
 }
+
+type Mutation {
+  addMovie(limit: Int!, title: String!, 
+            rating: Float!, 
+            summary: String!, 
+            language: String!,
+            medium_cover_image: String!,
+            url: String!): [Movie]
+}

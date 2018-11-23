@@ -1,4 +1,5 @@
 import axios from "axios";
+import { mergeSchemas } from "graphql-tools";
 const BASE_URL = "https://yts.am/api/v2/";
 const LIST_MOVIES_URL = `${BASE_URL}list_movies.json`;
 const MOVIE_DETAILS_URL = `${BASE_URL}movie_details.json`;
@@ -51,5 +52,23 @@ export const getSuggestions = async (id) => {
       movie_id: id
     }
   })
+  return movies
+}
+
+export const addMovie = async (limit, title, rating, summary, language, medium_cover_image, url) => {
+  let movies = await getMovies(limit)
+  
+  const newMovie = {
+    id: 1111111111,
+    title,
+    rating,
+    summary,
+    language,
+    medium_cover_image,
+    url
+  }
+  
+  // movies = {...movies, ...newMovie}
+  movies[limit] = newMovie
   return movies
 }
